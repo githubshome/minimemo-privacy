@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="privacyPolicyTitle">隐私政策 | MiniMemo</title>
+<style>
+  :root {
+    --primary: #00897B;
+    --primary-dark: #00695C;
+    --primary-light: #E0F2F1;
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --text: #212121;
+    --text-secondary: #616161;
+    --border: #E0E0E0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .hero .subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .lang-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .lang-btn {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  .lang-btn:hover { background: rgba(255,255,255,0.28); }
+  .lang-btn.active {
+    background: #fff;
+    color: var(--primary-dark);
+    border-color: #fff;
+    font-weight: 600;
+  }
+  .container {
+    max-width: 860px;
+    margin: -32px auto 64px;
+    padding: 0 20px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  @media (max-width: 600px) {
+    .card { padding: 24px 20px; }
+    .hero h1 { font-size: 26px; }
+  }
+  .section { margin-bottom: 28px; }
+  .section:last-child { margin-bottom: 0; }
+  .section h2 {
+    color: var(--primary-dark);
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary);
+  }
+  .section p {
+    white-space: pre-line;
+    color: var(--text-secondary);
+    font-size: 15px;
+    padding-left: 16px;
+  }
+  .section p strong { color: var(--text); }
+  .app-name {
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    color: #9E9E9E;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1><span class="app-name">MiniMemo</span> · <span data-i18n="privacyPolicyTitle">隐私政策</span></h1>
+  <p class="subtitle" data-i18n="privacyPolicyUpdated">最后更新日期：2026年8月3日</p>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn active" data-lang="zh-CN">简体中文</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="zh-TW">繁體中文</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+
+    <section class="section">
+      <h2 data-i18n="ppDataCollectionTitle">1. 信息收集</h2>
+      <p data-i18n="ppDataCollectionContent">我们仅在您使用本应用必需的范围内收集最少的信息：
+
+• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称
+• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）
+• 设备信息：设备标识符（用于订阅权益同步和防止试用期滥用）
+• 购买信息：通过 Google Play 处理，我们不直接获取您的支付卡号
+
+我们不会出售或出租您的任何个人信息。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppDataUsageTitle">2. 信息使用</h2>
+      <p data-i18n="ppDataUsageContent">您的信息仅用于以下目的：
+
+• 为您提供笔记存储、同步和会员服务
+• 验证您的购买和订阅状态
+• 防止欺诈和滥用行为
+• 改进应用体验（不收集个人身份数据的统计分析）
+
+我们不会将您的信息用于广告投放或与第三方共享（法律要求除外）。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppDataSecurityTitle">3. 数据安全</h2>
+      <p data-i18n="ppDataSecurityContent">我们采取以下措施保护您的数据：
+
+• 密码使用行业标准加密算法（SHA-256）存储
+• 所有本地数据存储在受保护的设备存储空间
+• 订阅状态通过安全的 Google Play 服务验证
+• 试用期采用设备级锁定，防止时钟篡改
+
+但请注意，没有任何互联网传输是 100% 安全的。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppYourRightsTitle">4. 您的权利</h2>
+      <p data-i18n="ppYourRightsContent">您对自己的个人数据享有以下权利：
+
+• 访问权：您可以随时查看您的账户信息
+• 删除权：您可以删除账户，所有个人数据将被永久清除
+• 退出权：您可以随时退出订阅和营销沟通
+• 可携带权：您可以导出您所有的笔记数据
+
+如需行使以上权利，请通过应用内反馈渠道联系我们。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppChildrenTitle">5. 儿童隐私</h2>
+      <p data-i18n="ppChildrenContent">本应用不面向 13 岁以下的儿童。我们不会故意收集儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppChangesTitle">6. 政策变更</h2>
+      <p data-i18n="ppChangesContent">我们可能会不时更新本隐私政策。重大变更时，我们将通过应用内通知告知您。更新后的政策将在本页面发布，并自发布之日起生效。</p>
+    </section>
+
+    <footer>
+      © 2026 MiniMemo · <span data-i18n="privacyPolicy">隐私政策</span>
+    </footer>
+  </div>
+</main>
+
+<script>
+const translations = {
+  "zh-CN": {
+    "privacyPolicyTitle": "隐私政策",
+    "privacyPolicyUpdated": "最后更新日期：2026年8月3日",
+    "privacyPolicy": "隐私政策",
+    "ppDataCollectionTitle": "1. 信息收集",
+    "ppDataCollectionContent": "我们仅在您使用本应用必需的范围内收集最少的信息：\n\n• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称\n• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）\n• 设备信息：设备标识符（用于订阅权益同步和防止试用期滥用）\n• 购买信息：通过 Google Play 处理，我们不直接获取您的支付卡号\n\n我们不会出售或出租您的任何个人信息。",
+    "ppDataUsageTitle": "2. 信息使用",
+    "ppDataUsageContent": "您的信息仅用于以下目的：\n\n• 为您提供笔记存储、同步和会员服务\n• 验证您的购买和订阅状态\n• 防止欺诈和滥用行为\n• 改进应用体验（不收集个人身份数据的统计分析）\n\n我们不会将您的信息用于广告投放或与第三方共享（法律要求除外）。",
+    "ppDataSecurityTitle": "3. 数据安全",
+    "ppDataSecurityContent": "我们采取以下措施保护您的数据：\n\n• 密码使用行业标准加密算法（SHA-256）存储\n• 所有本地数据存储在受保护的设备存储空间\n• 订阅状态通过安全的 Google Play 服务验证\n• 试用期采用设备级锁定，防止时钟篡改\n\n但请注意，没有任何互联网传输是 100% 安全的。",
+    "ppYourRightsTitle": "4. 您的权利",
+    "ppYourRightsContent": "您对自己的个人数据享有以下权利：\n\n• 访问权：您可以随时查看您的账户信息\n• 删除权：您可以删除账户，所有个人数据将被永久清除\n• 退出权：您可以随时退出订阅和营销沟通\n• 可携带权：您可以导出您所有的笔记数据\n\n如需行使以上权利，请通过应用内反馈渠道联系我们。",
+    "ppChildrenTitle": "5. 儿童隐私",
+    "ppChildrenContent": "本应用不面向 13 岁以下的儿童。我们不会故意收集儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。",
+    "ppChangesTitle": "6. 政策变更",
+    "ppChangesContent": "我们可能会不时更新本隐私政策。重大变更时，我们将通过应用内通知告知您。更新后的政策将在本页面发布，并自发布之日起生效。"
+  },
+  "en": {
+    "privacyPolicyTitle": "Privacy Policy",
+    "privacyPolicyUpdated": "Last updated: August 3, 2026",
+    "privacyPolicy": "Privacy Policy",
+    "ppDataCollectionTitle": "1. Information Collection",
+    "ppDataCollectionContent": "We collect minimal information necessary for you to use this app:\n\n• Account Info: Email, password (encrypted), nickname you provide during registration\n• Usage Data: Your notes, tags, attachments (stored locally on your device only)\n• Device Info: Device identifier (for subscription sync and trial abuse prevention)\n• Purchase Info: Processed through Google Play; we never access your payment card\n\nWe do not sell or rent any of your personal information.",
+    "ppDataUsageTitle": "2. Information Usage",
+    "ppDataUsageContent": "Your information is used solely for:\n\n• Providing note storage, sync, and premium services\n• Verifying your purchase and subscription status\n• Preventing fraud and abuse\n• Improving app experience (non-identifiable statistical analysis)\n\nWe do not use your information for advertising or share it with third parties (except as required by law).",
+    "ppDataSecurityTitle": "3. Data Security",
+    "ppDataSecurityContent": "We take the following measures to protect your data:\n\n• Passwords stored with industry-standard encryption (SHA-256)\n• All local data stored in protected device storage\n• Subscription status verified through secure Google Play services\n• Trial period device-level locked to prevent clock manipulation\n\nPlease note that no internet transmission is 100% secure.",
+    "ppYourRightsTitle": "4. Your Rights",
+    "ppYourRightsContent": "You have the following rights regarding your personal data:\n\n• Right to Access: You can view your account info at any time\n• Right to Delete: You can delete your account; all personal data will be permanently removed\n• Right to Opt Out: You can unsubscribe from subscriptions and marketing communications at any time\n• Right to Data Portability: You can export all your note data\n\nTo exercise these rights, please contact us via the in-app feedback channel.",
+    "ppChildrenTitle": "5. Children's Privacy",
+    "ppChildrenContent": "This app is not intended for children under 13. We do not knowingly collect personal information from children. If you are under 13, please do not use this app.",
+    "ppChangesTitle": "6. Policy Changes",
+    "ppChangesContent": "We may update this Privacy Policy from time to time. For significant changes, we will notify you via in-app notifications. The updated policy will be posted on this page and takes effect upon posting."
+  },
+  "zh-TW": {
+    "privacyPolicyTitle": "隱私政策",
+    "privacyPolicyUpdated": "最後更新日期：2026年8月3日",
+    "privacyPolicy": "隱私政策",
+    "ppDataCollectionTitle": "1. 資訊收集",
+    "ppDataCollectionContent": "我們僅在您使用本應用必需的範圍內收集最少的資訊：\n\n• 帳戶資訊：您註冊時提供的電子郵件、密碼（加密儲存）、暱稱\n• 使用資料：您建立的筆記內容、標籤、附件（僅儲存在您的裝置本機）\n• 裝置資訊：裝置識別碼（用於訂閱權益同步和防止試用期濫用）\n• 購買資訊：透過 Google Play 處理，我們不直接取得您的付款卡號\n\n我們不會出售或出租您的任何個人資訊。",
+    "ppDataUsageTitle": "2. 資訊使用",
+    "ppDataUsageContent": "您的資訊僅用於以下目的：\n\n• 為您提供筆記儲存、同步和會員服務\n• 驗證您的購買和訂閱狀態\n• 防止欺詐和濫用行為\n• 改進應用體驗（不收集個人身份資料的統計分析）\n\n我們不會將您的資訊用於廣告投放或與第三方共享（法律要求除外）。",
+    "ppDataSecurityTitle": "3. 資料安全",
+    "ppDataSecurityContent": "我們採取以下措施保護您的資料：\n\n• 密碼使用行業標準加密演算法（SHA-256）儲存\n• 所有本機資料儲存在受保護的裝置儲存空間\n• 訂閱狀態透過安全的 Google Play 服務驗證\n• 試用期採用裝置級鎖定，防止時鐘篡改\n\n請注意，沒有任何網際網路傳輸是 100% 安全的。",
+    "ppYourRightsTitle": "4. 您的權利",
+    "ppYourRightsContent": "您對自己的個人資料享有以下權利：\n\n• 存取權：您可以隨時查看您的帳戶資訊\n• 刪除權：您可以刪除帳戶，所有個人資料將被永久清除\n• 退出權：您可以隨時退出訂閱和行銷溝通\n• 可攜權：您可以匯出您所有的筆記資料\n\n如需行使以上權利，請透過應用內回饋渠道聯絡我們。",
+    "ppChildrenTitle": "5. 兒童隱私",
+    "ppChildrenContent": "本應用不面向 13 歲以下的兒童。我們不會故意收集兒童的個人資訊。如果您是 13 歲以下的使用者，請勿使用本應用。",
+    "ppChangesTitle": "6. 政策變更",
+    "ppChangesContent": "我們可能會不時更新本隱私政策。重大變更時，我們將透過應用內通知告知您。更新後的政策將在本頁面發布，並自發布之日起生效。"
+  }
+};
+
+function getLang() {
+  const saved = localStorage.getItem('minimemo-privacy-lang');
+  if (saved && translations[saved]) return saved;
+  const nav = (navigator.language || 'zh-CN');
+  if (nav.startsWith('zh-TW') || nav.startsWith('zh-HK')) return 'zh-TW';
+  if (nav.startsWith('zh')) return 'zh-CN';
+  if (translations[nav]) return nav;
+  return 'zh-CN';
+}
+
+function applyLang(lang) {
+  const dict = translations[lang] || translations['zh-CN'];
+  document.documentElement.lang = lang;
+  document.title = (dict['privacyPolicyTitle'] || 'Privacy Policy') + ' | MiniMemo';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) {
+      if (el.tagName === 'P') {
+        el.textContent = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  localStorage.setItem('minimemo-privacy-lang', lang);
+}
+
+document.getElementById('langSwitcher').addEventListener('click', (e) => {
+  const btn = e.target.closest('.lang-btn');
+  if (!btn) return;
+  applyLang(btn.getAttribute('data-lang'));
+});
+
+applyLang(getLang());
+</script>
+
+</body>
+</html>
