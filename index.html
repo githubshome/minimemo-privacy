@@ -14,6 +14,10 @@
     --text: #212121;
     --text-secondary: #616161;
     --border: #E0E0E0;
+    --warn-bg: #FFF8E1;
+    --warn-border: #FFC107;
+    --warn-text: #F57F17;
+    --link: #00897B;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -96,6 +100,85 @@
     padding-left: 16px;
   }
   .section p strong { color: var(--text); }
+  .section a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--link);
+  }
+  .section a:hover { text-decoration: underline; }
+  .third-party-item {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 10px 0 10px 16px;
+    border-left: 3px solid var(--primary-light);
+  }
+  .third-party-item strong {
+    display: block;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .third-party-item ul {
+    padding-left: 18px;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .third-party-item li { margin-bottom: 4px; }
+  .delete-box {
+    background: var(--primary-light);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 12px 16px 0;
+  }
+  .delete-box .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .delete-box .step:last-child { margin-bottom: 0; }
+  .delete-box .step-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .delete-box .delete-link {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .delete-box .delete-link:hover {
+    background: var(--primary-dark);
+    text-decoration: none;
+  }
+  .contact-email {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", Roboto, sans-serif;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary-dark);
+    font-weight: 500;
+  }
   .app-name {
     font-weight: 700;
     color: var(--primary-dark);
@@ -114,7 +197,7 @@
 
 <header class="hero">
   <h1><span class="app-name">MiniMemo</span> · <span data-i18n="privacyPolicyTitle">隐私政策</span></h1>
-  <p class="subtitle" data-i18n="privacyPolicyUpdated">最后更新日期：2026年8月3日</p>
+  <p class="subtitle" data-i18n="privacyPolicyUpdated">最后更新日期：2026年9月1日</p>
   <div class="lang-switcher" id="langSwitcher">
     <button class="lang-btn active" data-lang="zh-CN">简体中文</button>
     <button class="lang-btn" data-lang="en">English</button>
@@ -126,61 +209,147 @@
   <div class="card">
 
     <section class="section">
+      <h2 data-i18n="ppIntroTitle">引言</h2>
+      <p data-i18n="ppIntroContent">欢迎使用 MiniMemo（以下简称"本应用"）。我们非常重视您的隐私保护。本隐私政策将清楚地说明我们如何收集、使用、存储和保护您的个人数据，以及您享有的相关权利。
+
+请您在使用本应用前仔细阅读本政策。继续使用本应用即表示您同意本政策中所述的做法。</p>
+    </section>
+
+    <section class="section">
       <h2 data-i18n="ppDataCollectionTitle">1. 信息收集</h2>
       <p data-i18n="ppDataCollectionContent">我们仅在您使用本应用必需的范围内收集最少的信息：
 
-• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称
-• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）
-• 设备信息：设备标识符（用于订阅权益同步和防止试用期滥用）
-• 购买信息：通过 Google Play 处理，我们不直接获取您的支付卡号
+• <strong data-i18n="ppDataCollectionAccount">账户信息</strong>：您注册时提供的邮箱、密码（加密存储）、昵称
+• <strong data-i18n="ppDataCollectionUsage">使用数据</strong>：您创建的笔记内容、标签、附件（仅存储在您的设备本地）
+• <strong data-i18n="ppDataCollectionDevice">设备信息</strong>：设备标识符、操作系统版本（用于订阅权益同步、防止试用期滥用、广告展示和应用优化）
+• <strong data-i18n="ppDataCollectionPurchase">购买信息</strong>：通过 Google Play 和 RevenueCat SDK 处理的购买收据、订阅状态
+• <strong data-i18n="ppDataCollectionAnalytics">广告与分析数据</strong>：Google AdMob SDK 收集的广告标识符、广告交互数据（用于投放个性化广告和防止无效展示）
 
 我们不会出售或出租您的任何个人信息。</p>
     </section>
 
     <section class="section">
-      <h2 data-i18n="ppDataUsageTitle">2. 信息使用</h2>
+      <h2 data-i18n="ppThirdPartyTitle">2. 第三方数据处理者</h2>
+      <p data-i18n="ppThirdPartyIntro">本应用使用以下第三方服务，它们各自拥有独立的隐私政策。我们建议您仔细阅读：</p>
+
+      <div class="third-party-item">
+        <strong data-i18n="ppTPCRevenueCatName">RevenueCat（订阅权益服务）</strong>
+        <ul>
+          <li data-i18n="ppTPCRevenueCatDesc">用途：验证您的购买和订阅状态、跨设备同步会员权益</li>
+          <li data-i18n="ppTPCRevenueCatData">收集数据：设备标识符、Google Play 购买收据、应用内用户 ID</li>
+          <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">www.revenuecat.com/privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="third-party-item">
+        <strong data-i18n="ppTPCAdMobName">Google AdMob（移动广告服务）</strong>
+        <ul>
+          <li data-i18n="ppTPCAdMobDesc">用途：在免费版应用中展示广告</li>
+          <li data-i18n="ppTPCAdMobData">收集数据：广告标识符（AAID）、设备信息、广告交互数据、IP 地址</li>
+          <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="third-party-item">
+        <strong data-i18n="ppTPCGooglePlayName">Google Play（应用商店）</strong>
+        <ul>
+          <li data-i18n="ppTPCGooglePlayDesc">用途：处理您的应用内购买和订阅退款</li>
+          <li data-i18n="ppTPCGooglePlayData">收集数据：购买账户信息、交易记录</li>
+          <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppDataUsageTitle">3. 信息使用</h2>
       <p data-i18n="ppDataUsageContent">您的信息仅用于以下目的：
 
 • 为您提供笔记存储、同步和会员服务
-• 验证您的购买和订阅状态
+• 通过 RevenueCat 验证您的购买和订阅状态，同步跨设备会员权益
+• 通过 Google AdMob 在免费版中展示广告（您可以通过订阅会员移除广告）
 • 防止欺诈和滥用行为
-• 改进应用体验（不收集个人身份数据的统计分析）
+• 改进应用体验（使用不关联个人身份的统计数据）
 
-我们不会将您的信息用于广告投放或与第三方共享（法律要求除外）。</p>
+我们不会将您的个人信息与上述第三方之外的其他方共享（法律要求除外）。</p>
     </section>
 
     <section class="section">
-      <h2 data-i18n="ppDataSecurityTitle">3. 数据安全</h2>
+      <h2 data-i18n="ppDataSecurityTitle">4. 数据安全</h2>
       <p data-i18n="ppDataSecurityContent">我们采取以下措施保护您的数据：
 
-• 密码使用行业标准加密算法（SHA-256）存储
-• 所有本地数据存储在受保护的设备存储空间
-• 订阅状态通过安全的 Google Play 服务验证
-• 试用期采用设备级锁定，防止时钟篡改
+• <strong>传输加密</strong>：所有与第三方服务（RevenueCat、Google AdMob、Google Play）的通信均通过 HTTPS/TLS 加密传输
+• <strong>密码保护</strong>：账户密码使用行业标准加密算法（SHA-256）存储，永不存储明文密码
+• <strong>本地保护</strong>：所有笔记内容存储在您设备的内部存储空间，受操作系统沙箱保护
+• <strong>安全验证</strong>：订阅状态通过安全的 RevenueCat + Google Play 双重服务验证
 
-但请注意，没有任何互联网传输是 100% 安全的。</p>
+但请注意，没有任何互联网传输是 100% 安全的，我们无法保证绝对的安全性。</p>
     </section>
 
     <section class="section">
-      <h2 data-i18n="ppYourRightsTitle">4. 您的权利</h2>
-      <p data-i18n="ppYourRightsContent">您对自己的个人数据享有以下权利：
+      <h2 data-i18n="ppYourRightsTitle">5. 您的权利</h2>
+      <p data-i18n="ppYourRightsContent">根据适用的隐私法规，您对自己的个人数据享有以下权利：
 
-• 访问权：您可以随时查看您的账户信息
-• 删除权：您可以删除账户，所有个人数据将被永久清除
-• 退出权：您可以随时退出订阅和营销沟通
-• 可携带权：您可以导出您所有的笔记数据
+• <strong data-i18n="ppYourRightsAccess">访问权</strong>：您可以随时查看您的账户信息和与您相关的数据
+• <strong data-i18n="ppYourRightsDelete">删除权</strong>：您可以申请删除账户，所有个人数据将被永久清除（详见下方"如何删除您的账户和数据"章节）
+• <strong data-i18n="ppYourRightsOptOut">退出权</strong>：您可以随时退出订阅和营销沟通
+• <strong data-i18n="ppYourRightsPortability">可携带权</strong>：您可以导出您所有的笔记数据
 
-如需行使以上权利，请通过应用内反馈渠道联系我们。</p>
+如需行使以上权利，请通过本页面下方的删除账户流程或发送邮件至 <span class="contact-email">minimemo-privacy@outlook.com</span> 联系我们。</p>
     </section>
 
     <section class="section">
-      <h2 data-i18n="ppChildrenTitle">5. 儿童隐私</h2>
-      <p data-i18n="ppChildrenContent">本应用不面向 13 岁以下的儿童。我们不会故意收集儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。</p>
+      <h2 data-i18n="ppDeleteAccountTitle">6. 如何删除您的账户和数据</h2>
+      <p data-i18n="ppDeleteAccountIntro">我们尊重您的数据所有权。如果您希望删除 MiniMemo 账户及相关数据，请按以下步骤操作：</p>
+
+      <div class="delete-box">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div data-i18n="ppDeleteStep1">点击下方按钮访问我们的账户删除专用页面</div>
+        </div>
+        <div style="padding-left: 36px;">
+          <a href="https://githubshome.github.io/minimemo-privacy/" target="_blank" rel="noopener noreferrer" class="delete-link"><span data-i18n="ppDeleteButton">请求删除我的账户和数据 →</span></a>
+        </div>
+        <div class="step" style="margin-top: 16px;">
+          <div class="step-num">2</div>
+          <div data-i18n="ppDeleteStep2">在删除页面填写您注册账户时使用的邮箱地址，并提交删除请求</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div data-i18n="ppDeleteStep3">我们将在 7 个工作日内确认您的请求并完成数据删除，删除完成后会通过邮件通知您</div>
+        </div>
+      </div>
+
+      <p data-i18n="ppDeleteWhatGetsDeleted" style="margin-top: 16px;">
+<strong data-i18n="ppDeleteWhatGetsDeletedLabel">删除内容包括：</strong>
+• 您的账户注册信息（邮箱、昵称、加密密码哈希）
+• RevenueCat SDK 中关联的订阅记录和跨设备权益数据
+• Google AdMob 中与您设备关联的广告标识符引用
+
+<strong data-i18n="ppDeleteNote">注意：</strong>您设备本地存储的笔记内容、标签和附件由您自行管理，删除账户不会自动删除这些本地数据。您可以通过应用内的导出功能将笔记迁移至其他设备，或手动删除。
+      </p>
     </section>
 
     <section class="section">
-      <h2 data-i18n="ppChangesTitle">6. 政策变更</h2>
-      <p data-i18n="ppChangesContent">我们可能会不时更新本隐私政策。重大变更时，我们将通过应用内通知告知您。更新后的政策将在本页面发布，并自发布之日起生效。</p>
+      <h2 data-i18n="ppChildrenTitle">7. 儿童隐私</h2>
+      <p data-i18n="ppChildrenContent">本应用不面向 13 岁以下的儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。
+
+如果我们发现在未获得可验证的家长同意的情况下收集了儿童的个人信息，我们将尽快删除相关数据。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppContactTitle">8. 联系我们</h2>
+      <p data-i18n="ppContactContent">如果您对本隐私政策有任何疑问、意见或建议，或需要行使您的数据权利，请通过以下方式联系我们：
+
+📧 邮件：<span class="contact-email">minimemo-privacy@outlook.com</span>
+
+我们将在收到您的请求后 7 个工作日内予以回复。</p>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="ppChangesTitle">9. 政策变更</h2>
+      <p data-i18n="ppChangesContent">我们可能会不时更新本隐私政策。重大变更时（如新增第三方服务、修改数据收集范围等），我们将通过应用内通知或本页面显著位置公告告知您。更新后的政策将在本页面发布，并自发布之日起生效。
+
+您可以随时在应用内"设置 → 隐私政策"查看本政策的最新版本。</p>
     </section>
 
     <footer>
@@ -193,54 +362,156 @@
 const translations = {
   "zh-CN": {
     "privacyPolicyTitle": "隐私政策",
-    "privacyPolicyUpdated": "最后更新日期：2026年8月3日",
+    "privacyPolicyUpdated": "最后更新日期：2026年9月1日",
     "privacyPolicy": "隐私政策",
+    "ppIntroTitle": "引言",
+    "ppIntroContent": "欢迎使用 MiniMemo（以下简称\"本应用\"）。我们非常重视您的隐私保护。本隐私政策将清楚地说明我们如何收集、使用、存储和保护您的个人数据，以及您享有的相关权利。\n\n请您在使用本应用前仔细阅读本政策。继续使用本应用即表示您同意本政策中所述的做法。",
     "ppDataCollectionTitle": "1. 信息收集",
-    "ppDataCollectionContent": "我们仅在您使用本应用必需的范围内收集最少的信息：\n\n• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称\n• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）\n• 设备信息：设备标识符（用于订阅权益同步和防止试用期滥用）\n• 购买信息：通过 Google Play 处理，我们不直接获取您的支付卡号\n\n我们不会出售或出租您的任何个人信息。",
-    "ppDataUsageTitle": "2. 信息使用",
-    "ppDataUsageContent": "您的信息仅用于以下目的：\n\n• 为您提供笔记存储、同步和会员服务\n• 验证您的购买和订阅状态\n• 防止欺诈和滥用行为\n• 改进应用体验（不收集个人身份数据的统计分析）\n\n我们不会将您的信息用于广告投放或与第三方共享（法律要求除外）。",
-    "ppDataSecurityTitle": "3. 数据安全",
-    "ppDataSecurityContent": "我们采取以下措施保护您的数据：\n\n• 密码使用行业标准加密算法（SHA-256）存储\n• 所有本地数据存储在受保护的设备存储空间\n• 订阅状态通过安全的 Google Play 服务验证\n• 试用期采用设备级锁定，防止时钟篡改\n\n但请注意，没有任何互联网传输是 100% 安全的。",
-    "ppYourRightsTitle": "4. 您的权利",
-    "ppYourRightsContent": "您对自己的个人数据享有以下权利：\n\n• 访问权：您可以随时查看您的账户信息\n• 删除权：您可以删除账户，所有个人数据将被永久清除\n• 退出权：您可以随时退出订阅和营销沟通\n• 可携带权：您可以导出您所有的笔记数据\n\n如需行使以上权利，请通过应用内反馈渠道联系我们。",
-    "ppChildrenTitle": "5. 儿童隐私",
-    "ppChildrenContent": "本应用不面向 13 岁以下的儿童。我们不会故意收集儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。",
-    "ppChangesTitle": "6. 政策变更",
-    "ppChangesContent": "我们可能会不时更新本隐私政策。重大变更时，我们将通过应用内通知告知您。更新后的政策将在本页面发布，并自发布之日起生效。"
+    "ppDataCollectionContent": "我们仅在您使用本应用必需的范围内收集最少的信息：\n\n• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称\n• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）\n• 设备信息：设备标识符、操作系统版本（用于订阅权益同步、防止试用期滥用、广告展示和应用优化）\n• 购买信息：通过 Google Play 和 RevenueCat SDK 处理的购买收据、订阅状态\n• 广告与分析数据：Google AdMob SDK 收集的广告标识符、广告交互数据（用于投放个性化广告和防止无效展示）\n\n我们不会出售或出租您的任何个人信息。",
+    "ppDataCollectionAccount": "账户信息",
+    "ppDataCollectionUsage": "使用数据",
+    "ppDataCollectionDevice": "设备信息",
+    "ppDataCollectionPurchase": "购买信息",
+    "ppDataCollectionAnalytics": "广告与分析数据",
+    "ppThirdPartyTitle": "2. 第三方数据处理者",
+    "ppThirdPartyIntro": "本应用使用以下第三方服务，它们各自拥有独立的隐私政策。我们建议您仔细阅读：",
+    "ppTPCRevenueCatName": "RevenueCat（订阅权益服务）",
+    "ppTPCRevenueCatDesc": "用途：验证您的购买和订阅状态、跨设备同步会员权益",
+    "ppTPCRevenueCatData": "收集数据：设备标识符、Google Play 购买收据、应用内用户 ID",
+    "ppPrivacyPolicyLabel": "隐私政策：",
+    "ppTPCAdMobName": "Google AdMob（移动广告服务）",
+    "ppTPCAdMobDesc": "用途：在免费版应用中展示广告",
+    "ppTPCAdMobData": "收集数据：广告标识符（AAID）、设备信息、广告交互数据、IP 地址",
+    "ppTPCGooglePlayName": "Google Play（应用商店）",
+    "ppTPCGooglePlayDesc": "用途：处理您的应用内购买和订阅退款",
+    "ppTPCGooglePlayData": "收集数据：购买账户信息、交易记录",
+    "ppDataUsageTitle": "3. 信息使用",
+    "ppDataUsageContent": "您的信息仅用于以下目的：\n\n• 为您提供笔记存储、同步和会员服务\n• 通过 RevenueCat 验证您的购买和订阅状态，同步跨设备会员权益\n• 通过 Google AdMob 在免费版中展示广告（您可以通过订阅会员移除广告）\n• 防止欺诈和滥用行为\n• 改进应用体验（使用不关联个人身份的统计数据）\n\n我们不会将您的个人信息与上述第三方之外的其他方共享（法律要求除外）。",
+    "ppDataSecurityTitle": "4. 数据安全",
+    "ppDataSecurityContent": "我们采取以下措施保护您的数据：\n\n• 传输加密：所有与第三方服务（RevenueCat、Google AdMob、Google Play）的通信均通过 HTTPS/TLS 加密传输\n• 密码保护：账户密码使用行业标准加密算法（SHA-256）存储，永不存储明文密码\n• 本地保护：所有笔记内容存储在您设备的内部存储空间，受操作系统沙箱保护\n• 安全验证：订阅状态通过安全的 RevenueCat + Google Play 双重服务验证\n\n但请注意，没有任何互联网传输是 100% 安全的，我们无法保证绝对的安全性。",
+    "ppYourRightsTitle": "5. 您的权利",
+    "ppYourRightsContent": "根据适用的隐私法规，您对自己的个人数据享有以下权利：\n\n• 访问权：您可以随时查看您的账户信息和与您相关的数据\n• 删除权：您可以申请删除账户，所有个人数据将被永久清除（详见下方\"如何删除您的账户和数据\"章节）\n• 退出权：您可以随时退出订阅和营销沟通\n• 可携带权：您可以导出您所有的笔记数据\n\n如需行使以上权利，请通过本页面下方的删除账户流程或发送邮件至 minimemo-privacy@outlook.com 联系我们。",
+    "ppYourRightsAccess": "访问权",
+    "ppYourRightsDelete": "删除权",
+    "ppYourRightsOptOut": "退出权",
+    "ppYourRightsPortability": "可携带权",
+    "ppDeleteAccountTitle": "6. 如何删除您的账户和数据",
+    "ppDeleteAccountIntro": "我们尊重您的数据所有权。如果您希望删除 MiniMemo 账户及相关数据，请按以下步骤操作：",
+    "ppDeleteStep1": "点击下方按钮访问我们的账户删除专用页面",
+    "ppDeleteButton": "请求删除我的账户和数据 →",
+    "ppDeleteStep2": "在删除页面填写您注册账户时使用的邮箱地址，并提交删除请求",
+    "ppDeleteStep3": "我们将在 7 个工作日内确认您的请求并完成数据删除，删除完成后会通过邮件通知您",
+    "ppDeleteWhatGetsDeleted": "删除内容包括：\n• 您的账户注册信息（邮箱、昵称、加密密码哈希）\n• RevenueCat SDK 中关联的订阅记录和跨设备权益数据\n• Google AdMob 中与您设备关联的广告标识符引用\n\n注意：您设备本地存储的笔记内容、标签和附件由您自行管理，删除账户不会自动删除这些本地数据。您可以通过应用内的导出功能将笔记迁移至其他设备，或手动删除。",
+    "ppDeleteWhatGetsDeletedLabel": "删除内容包括：",
+    "ppDeleteNote": "注意：",
+    "ppChildrenTitle": "7. 儿童隐私",
+    "ppChildrenContent": "本应用不面向 13 岁以下的儿童。我们不会故意收集 13 岁以下儿童的个人信息。如果您是 13 岁以下的用户，请勿使用本应用。\n\n如果我们发现在未获得可验证的家长同意的情况下收集了儿童的个人信息，我们将尽快删除相关数据。",
+    "ppContactTitle": "8. 联系我们",
+    "ppContactContent": "如果您对本隐私政策有任何疑问、意见或建议，或需要行使您的数据权利，请通过以下方式联系我们：\n\n📧 邮件：minimemo-privacy@outlook.com\n\n我们将在收到您的请求后 7 个工作日内予以回复。",
+    "ppChangesTitle": "9. 政策变更",
+    "ppChangesContent": "我们可能会不时更新本隐私政策。重大变更时（如新增第三方服务、修改数据收集范围等），我们将通过应用内通知或本页面显著位置公告告知您。更新后的政策将在本页面发布，并自发布之日起生效。\n\n您可以随时在应用内\"设置 → 隐私政策\"查看本政策的最新版本。"
   },
   "en": {
     "privacyPolicyTitle": "Privacy Policy",
-    "privacyPolicyUpdated": "Last updated: August 3, 2026",
+    "privacyPolicyUpdated": "Last updated: September 1, 2026",
     "privacyPolicy": "Privacy Policy",
+    "ppIntroTitle": "Introduction",
+    "ppIntroContent": "Welcome to MiniMemo (hereinafter referred to as \"the App\"). We take your privacy very seriously. This Privacy Policy clearly explains how we collect, use, store, and protect your personal data, as well as the rights you have regarding it.\n\nPlease read this policy carefully before using the App. By continuing to use the App, you consent to the practices described in this policy.",
     "ppDataCollectionTitle": "1. Information Collection",
-    "ppDataCollectionContent": "We collect minimal information necessary for you to use this app:\n\n• Account Info: Email, password (encrypted), nickname you provide during registration\n• Usage Data: Your notes, tags, attachments (stored locally on your device only)\n• Device Info: Device identifier (for subscription sync and trial abuse prevention)\n• Purchase Info: Processed through Google Play; we never access your payment card\n\nWe do not sell or rent any of your personal information.",
-    "ppDataUsageTitle": "2. Information Usage",
-    "ppDataUsageContent": "Your information is used solely for:\n\n• Providing note storage, sync, and premium services\n• Verifying your purchase and subscription status\n• Preventing fraud and abuse\n• Improving app experience (non-identifiable statistical analysis)\n\nWe do not use your information for advertising or share it with third parties (except as required by law).",
-    "ppDataSecurityTitle": "3. Data Security",
-    "ppDataSecurityContent": "We take the following measures to protect your data:\n\n• Passwords stored with industry-standard encryption (SHA-256)\n• All local data stored in protected device storage\n• Subscription status verified through secure Google Play services\n• Trial period device-level locked to prevent clock manipulation\n\nPlease note that no internet transmission is 100% secure.",
-    "ppYourRightsTitle": "4. Your Rights",
-    "ppYourRightsContent": "You have the following rights regarding your personal data:\n\n• Right to Access: You can view your account info at any time\n• Right to Delete: You can delete your account; all personal data will be permanently removed\n• Right to Opt Out: You can unsubscribe from subscriptions and marketing communications at any time\n• Right to Data Portability: You can export all your note data\n\nTo exercise these rights, please contact us via the in-app feedback channel.",
-    "ppChildrenTitle": "5. Children's Privacy",
-    "ppChildrenContent": "This app is not intended for children under 13. We do not knowingly collect personal information from children. If you are under 13, please do not use this app.",
-    "ppChangesTitle": "6. Policy Changes",
-    "ppChangesContent": "We may update this Privacy Policy from time to time. For significant changes, we will notify you via in-app notifications. The updated policy will be posted on this page and takes effect upon posting."
+    "ppDataCollectionContent": "We collect minimal information necessary for you to use this App:\n\n• Account Info: Email, password (encrypted), nickname you provide during registration\n• Usage Data: Your notes, tags, attachments (stored locally on your device only)\n• Device Info: Device identifier, OS version (for subscription sync, trial abuse prevention, ad serving, and app optimization)\n• Purchase Info: Purchase receipts and subscription status processed through Google Play and the RevenueCat SDK\n• Ad & Analytics Data: Ad identifier and ad interaction data collected by the Google AdMob SDK (for serving personalized ads and preventing invalid impressions)\n\nWe do not sell or rent any of your personal information.",
+    "ppDataCollectionAccount": "Account Info",
+    "ppDataCollectionUsage": "Usage Data",
+    "ppDataCollectionDevice": "Device Info",
+    "ppDataCollectionPurchase": "Purchase Info",
+    "ppDataCollectionAnalytics": "Ad & Analytics Data",
+    "ppThirdPartyTitle": "2. Third-Party Data Processors",
+    "ppThirdPartyIntro": "This App uses the following third-party services, each with its own independent privacy policy. We encourage you to read them carefully:",
+    "ppTPCRevenueCatName": "RevenueCat (Subscription Service)",
+    "ppTPCRevenueCatDesc": "Purpose: Verify your purchase and subscription status, sync premium benefits across devices",
+    "ppTPCRevenueCatData": "Data collected: Device identifier, Google Play purchase receipt, in-app user ID",
+    "ppPrivacyPolicyLabel": "Privacy Policy: ",
+    "ppTPCAdMobName": "Google AdMob (Mobile Ad Service)",
+    "ppTPCAdMobDesc": "Purpose: Serve advertisements in the free version of the App",
+    "ppTPCAdMobData": "Data collected: Ad identifier (AAID), device info, ad interaction data, IP address",
+    "ppTPCGooglePlayName": "Google Play (App Store)",
+    "ppTPCGooglePlayDesc": "Purpose: Process your in-app purchases and subscription refunds",
+    "ppTPCGooglePlayData": "Data collected: Purchase account info, transaction records",
+    "ppDataUsageTitle": "3. Information Usage",
+    "ppDataUsageContent": "Your information is used solely for:\n\n• Providing note storage, sync, and premium services\n• Verifying your purchase and subscription status via RevenueCat, syncing premium benefits across devices\n• Serving ads in the free version via Google AdMob (you can remove ads by subscribing to Premium)\n• Preventing fraud and abuse\n• Improving app experience (using non-personally identifiable statistical data)\n\nWe do not share your personal information with parties other than the third parties listed above (except as required by law).",
+    "ppDataSecurityTitle": "4. Data Security",
+    "ppDataSecurityContent": "We take the following measures to protect your data:\n\n• Encrypted Transmission: All communications with third-party services (RevenueCat, Google AdMob, Google Play) are encrypted via HTTPS/TLS\n• Password Protection: Account passwords are stored with industry-standard encryption (SHA-256); we never store plaintext passwords\n• Local Protection: All note content is stored on your device's internal storage, protected by the operating system sandbox\n• Secure Verification: Subscription status is verified through the secure RevenueCat + Google Play dual service\n\nPlease note that no internet transmission is 100% secure, and we cannot guarantee absolute security.",
+    "ppYourRightsTitle": "5. Your Rights",
+    "ppYourRightsContent": "Under applicable privacy regulations, you have the following rights regarding your personal data:\n\n• Right to Access: You can view your account information and data related to you at any time\n• Right to Delete: You can request to delete your account; all personal data will be permanently removed (see the \"How to Delete Your Account and Data\" section below)\n• Right to Opt Out: You can unsubscribe from subscriptions and marketing communications at any time\n• Right to Data Portability: You can export all your note data\n\nTo exercise these rights, please follow the account deletion process below or contact us via email at minimemo-privacy@outlook.com.",
+    "ppYourRightsAccess": "Right to Access",
+    "ppYourRightsDelete": "Right to Delete",
+    "ppYourRightsOptOut": "Right to Opt Out",
+    "ppYourRightsPortability": "Right to Data Portability",
+    "ppDeleteAccountTitle": "6. How to Delete Your Account and Data",
+    "ppDeleteAccountIntro": "We respect your data ownership. If you wish to delete your MiniMemo account and related data, please follow these steps:",
+    "ppDeleteStep1": "Click the button below to visit our dedicated account deletion page",
+    "ppDeleteButton": "Request to Delete My Account and Data →",
+    "ppDeleteStep2": "On the deletion page, enter the email address you used to register your account and submit the deletion request",
+    "ppDeleteStep3": "We will confirm your request and complete the data deletion within 7 business days, and notify you via email when done",
+    "ppDeleteWhatGetsDeleted": "What will be deleted:\n• Your account registration info (email, nickname, encrypted password hash)\n• Subscription records and cross-device premium data associated in the RevenueCat SDK\n• Ad identifier references associated with your device in Google AdMob\n\nNote: Note content, tags, and attachments stored locally on your device are managed by you. Deleting your account will not automatically delete this local data. You can export your notes via the in-app export feature to migrate to another device, or delete them manually.",
+    "ppDeleteWhatGetsDeletedLabel": "What will be deleted:",
+    "ppDeleteNote": "Note:",
+    "ppChildrenTitle": "7. Children's Privacy",
+    "ppChildrenContent": "This App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are under 13, please do not use this App.\n\nIf we discover that we have collected children's personal information without verifiable parental consent, we will delete the relevant data as soon as possible.",
+    "ppContactTitle": "8. Contact Us",
+    "ppContactContent": "If you have any questions, comments, or suggestions regarding this Privacy Policy, or need to exercise your data rights, please contact us through:\n\n📧 Email: minimemo-privacy@outlook.com\n\nWe will respond within 7 business days of receiving your request.",
+    "ppChangesTitle": "9. Policy Changes",
+    "ppChangesContent": "We may update this Privacy Policy from time to time. For significant changes (e.g., adding new third-party services, modifying the scope of data collection), we will notify you via in-app notifications or prominent notices on this page. The updated policy will be posted on this page and takes effect upon posting.\n\nYou can always view the latest version of this policy in the App under \"Settings → Privacy Policy\"."
   },
   "zh-TW": {
     "privacyPolicyTitle": "隱私政策",
-    "privacyPolicyUpdated": "最後更新日期：2026年8月3日",
+    "privacyPolicyUpdated": "最後更新日期：2026年9月1日",
     "privacyPolicy": "隱私政策",
+    "ppIntroTitle": "引言",
+    "ppIntroContent": "歡迎使用 MiniMemo（以下簡稱「本應用」）。我們非常重視您的隱私保護。本隱私政策將清楚地說明我們如何收集、使用、儲存和保護您的個人資料，以及您享有的相關權利。\n\n請您在使用本應用前仔細閱讀本政策。繼續使用本應用即表示您同意本政策中所述的做法。",
     "ppDataCollectionTitle": "1. 資訊收集",
-    "ppDataCollectionContent": "我們僅在您使用本應用必需的範圍內收集最少的資訊：\n\n• 帳戶資訊：您註冊時提供的電子郵件、密碼（加密儲存）、暱稱\n• 使用資料：您建立的筆記內容、標籤、附件（僅儲存在您的裝置本機）\n• 裝置資訊：裝置識別碼（用於訂閱權益同步和防止試用期濫用）\n• 購買資訊：透過 Google Play 處理，我們不直接取得您的付款卡號\n\n我們不會出售或出租您的任何個人資訊。",
-    "ppDataUsageTitle": "2. 資訊使用",
-    "ppDataUsageContent": "您的資訊僅用於以下目的：\n\n• 為您提供筆記儲存、同步和會員服務\n• 驗證您的購買和訂閱狀態\n• 防止欺詐和濫用行為\n• 改進應用體驗（不收集個人身份資料的統計分析）\n\n我們不會將您的資訊用於廣告投放或與第三方共享（法律要求除外）。",
-    "ppDataSecurityTitle": "3. 資料安全",
-    "ppDataSecurityContent": "我們採取以下措施保護您的資料：\n\n• 密碼使用行業標準加密演算法（SHA-256）儲存\n• 所有本機資料儲存在受保護的裝置儲存空間\n• 訂閱狀態透過安全的 Google Play 服務驗證\n• 試用期採用裝置級鎖定，防止時鐘篡改\n\n請注意，沒有任何網際網路傳輸是 100% 安全的。",
-    "ppYourRightsTitle": "4. 您的權利",
-    "ppYourRightsContent": "您對自己的個人資料享有以下權利：\n\n• 存取權：您可以隨時查看您的帳戶資訊\n• 刪除權：您可以刪除帳戶，所有個人資料將被永久清除\n• 退出權：您可以隨時退出訂閱和行銷溝通\n• 可攜權：您可以匯出您所有的筆記資料\n\n如需行使以上權利，請透過應用內回饋渠道聯絡我們。",
-    "ppChildrenTitle": "5. 兒童隱私",
-    "ppChildrenContent": "本應用不面向 13 歲以下的兒童。我們不會故意收集兒童的個人資訊。如果您是 13 歲以下的使用者，請勿使用本應用。",
-    "ppChangesTitle": "6. 政策變更",
-    "ppChangesContent": "我們可能會不時更新本隱私政策。重大變更時，我們將透過應用內通知告知您。更新後的政策將在本頁面發布，並自發布之日起生效。"
+    "ppDataCollectionContent": "我們僅在您使用本應用必需的範圍內收集最少的資訊：\n\n• 帳戶資訊：您註冊時提供的電子郵件、密碼（加密儲存）、暱稱\n• 使用資料：您建立的筆記內容、標籤、附件（僅儲存在您的裝置本機）\n• 裝置資訊：裝置識別碼、作業系統版本（用於訂閱權益同步、防止試用期濫用、廣告展示和應用優化）\n• 購買資訊：透過 Google Play 和 RevenueCat SDK 處理的購買收據、訂閱狀態\n• 廣告與分析資料：Google AdMob SDK 收集的廣告識別碼、廣告互動資料（用於投放個人化廣告和防止無效展示）\n\n我們不會出售或出租您的任何個人資訊。",
+    "ppDataCollectionAccount": "帳戶資訊",
+    "ppDataCollectionUsage": "使用資料",
+    "ppDataCollectionDevice": "裝置資訊",
+    "ppDataCollectionPurchase": "購買資訊",
+    "ppDataCollectionAnalytics": "廣告與分析資料",
+    "ppThirdPartyTitle": "2. 第三方資料處理者",
+    "ppThirdPartyIntro": "本應用使用以下第三方服務，它們各自擁有獨立的隱私政策。我們建議您仔細閱讀：",
+    "ppTPCRevenueCatName": "RevenueCat（訂閱權益服務）",
+    "ppTPCRevenueCatDesc": "用途：驗證您的購買和訂閱狀態、跨裝置同步會員權益",
+    "ppTPCRevenueCatData": "收集資料：裝置識別碼、Google Play 購買收據、應用內使用者 ID",
+    "ppPrivacyPolicyLabel": "隱私政策：",
+    "ppTPCAdMobName": "Google AdMob（行動廣告服務）",
+    "ppTPCAdMobDesc": "用途：在免費版應用中展示廣告",
+    "ppTPCAdMobData": "收集資料：廣告識別碼（AAID）、裝置資訊、廣告互動資料、IP 位址",
+    "ppTPCGooglePlayName": "Google Play（應用商店）",
+    "ppTPCGooglePlayDesc": "用途：處理您的應用內購買和訂閱退款",
+    "ppTPCGooglePlayData": "收集資料：購買帳戶資訊、交易記錄",
+    "ppDataUsageTitle": "3. 資訊使用",
+    "ppDataUsageContent": "您的資訊僅用於以下目的：\n\n• 為您提供筆記儲存、同步和會員服務\n• 透過 RevenueCat 驗證您的購買和訂閱狀態，同步跨裝置會員權益\n• 透過 Google AdMob 在免費版中展示廣告（您可以透過訂閱會員移除廣告）\n• 防止欺詐和濫用行為\n• 改進應用體驗（使用不關聯個人身份的統計資料）\n\n我們不會將您的個人資訊與上述第三方之外的其他方共享（法律要求除外）。",
+    "ppDataSecurityTitle": "4. 資料安全",
+    "ppDataSecurityContent": "我們採取以下措施保護您的資料：\n\n• 傳輸加密：所有與第三方服務（RevenueCat、Google AdMob、Google Play）的通訊均透過 HTTPS/TLS 加密傳輸\n• 密碼保護：帳戶密碼使用行業標準加密演算法（SHA-256）儲存，永不儲存明文密碼\n• 本機保護：所有筆記內容儲存在您裝置的內部儲存空間，受作業系統沙箱保護\n• 安全驗證：訂閱狀態透過安全的 RevenueCat + Google Play 雙重服務驗證\n\n請注意，沒有任何網際網路傳輸是 100% 安全的，我們無法保證絕對的安全性。",
+    "ppYourRightsTitle": "5. 您的權利",
+    "ppYourRightsContent": "根據適用的隱私法規，您對自己的個人資料享有以下權利：\n\n• 存取權：您可以隨時查看您的帳戶資訊和與您相關的資料\n• 刪除權：您可以申請刪除帳戶，所有個人資料將被永久清除（詳見下方「如何刪除您的帳戶和資料」章節）\n• 退出權：您可以隨時退出訂閱和行銷溝通\n• 可攜權：您可以匯出您所有的筆記資料\n\n如需行使以上權利，請透過本頁面下方的刪除帳戶流程或寄送電子郵件至 minimemo-privacy@outlook.com 聯絡我們。",
+    "ppYourRightsAccess": "存取權",
+    "ppYourRightsDelete": "刪除權",
+    "ppYourRightsOptOut": "退出權",
+    "ppYourRightsPortability": "可攜權",
+    "ppDeleteAccountTitle": "6. 如何刪除您的帳戶和資料",
+    "ppDeleteAccountIntro": "我們尊重您的資料所有權。如果您希望刪除 MiniMemo 帳戶及相關資料，請按以下步驟操作：",
+    "ppDeleteStep1": "點擊下方按鈕造訪我們的帳戶刪除專用頁面",
+    "ppDeleteButton": "請求刪除我的帳戶和資料 →",
+    "ppDeleteStep2": "在刪除頁面填寫您註冊帳戶時使用的電子郵件地址，並提交刪除請求",
+    "ppDeleteStep3": "我們將在 7 個工作天內確認您的請求並完成資料刪除，刪除完成後會透過郵件通知您",
+    "ppDeleteWhatGetsDeleted": "刪除內容包括：\n• 您的帳戶註冊資訊（電子郵件、暱稱、加密密碼雜湊）\n• RevenueCat SDK 中關聯的訂閱記錄和跨裝置權益資料\n• Google AdMob 中與您裝置關聯的廣告識別碼引用\n\n注意：您裝置本機儲存的筆記內容、標籤和附件由您自行管理，刪除帳戶不會自動刪除這些本機資料。您可以透過應用內的匯出功能將筆記遷移至其他裝置，或手動刪除。",
+    "ppDeleteWhatGetsDeletedLabel": "刪除內容包括：",
+    "ppDeleteNote": "注意：",
+    "ppChildrenTitle": "7. 兒童隱私",
+    "ppChildrenContent": "本應用不面向 13 歲以下的兒童。我們不會故意收集 13 歲以下兒童的個人資訊。如果您是 13 歲以下的使用者，請勿使用本應用。\n\n如果我們發現在未獲得可驗證的家長同意的情況下收集了兒童的個人資訊，我們將盡快刪除相關資料。",
+    "ppContactTitle": "8. 聯絡我們",
+    "ppContactContent": "如果您對本隱私政策有任何疑問、意見或建議，或需要行使您的資料權利，請透過以下方式聯絡我們：\n\n📧 電子郵件：minimemo-privacy@outlook.com\n\n我們將在收到您的請求後 7 個工作天內予以回覆。",
+    "ppChangesTitle": "9. 政策變更",
+    "ppChangesContent": "我們可能會不時更新本隱私政策。重大變更時（如新增第三方服務、修改資料收集範圍等），我們將透過應用內通知或本頁面顯著位置公告告知您。更新後的政策將在本頁面發布，並自發布之日起生效。\n\n您可以隨時在應用內「設定 → 隱私政策」查看本政策的最新版本。"
   }
 };
 
@@ -261,11 +532,7 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key] != null) {
-      if (el.tagName === 'P') {
-        el.textContent = dict[key];
-      } else {
-        el.textContent = dict[key];
-      }
+      el.textContent = dict[key];
     }
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
