@@ -197,7 +197,7 @@
 
 <header class="hero">
   <h1><span class="app-name">MiniMemo</span> · <span data-i18n="privacyPolicyTitle">隐私政策</span></h1>
-  <p class="subtitle" data-i18n="privacyPolicyUpdated">最后更新日期：2026年9月1日</p>
+    <p class="subtitle" data-i18n="privacyPolicyUpdated">最后更新日期：2026年10月8日</p>
   <div class="lang-switcher" id="langSwitcher">
     <button class="lang-btn active" data-lang="zh-CN">简体中文</button>
     <button class="lang-btn" data-lang="en">English</button>
@@ -219,11 +219,16 @@
       <h2 data-i18n="ppDataCollectionTitle">1. 信息收集</h2>
       <p data-i18n="ppDataCollectionContent">我们仅在您使用本应用必需的范围内收集最少的信息：
 
-• <strong data-i18n="ppDataCollectionAccount">账户信息</strong>：您注册时提供的邮箱、密码（加密存储）、昵称
-• <strong data-i18n="ppDataCollectionUsage">使用数据</strong>：您创建的笔记内容、标签、附件（仅存储在您的设备本地）
-• <strong data-i18n="ppDataCollectionDevice">设备信息</strong>：设备标识符、操作系统版本（用于订阅权益同步、防止试用期滥用、广告展示和应用优化）
-• <strong data-i18n="ppDataCollectionPurchase">购买信息</strong>：通过 Google Play 和 RevenueCat SDK 处理的购买收据、订阅状态
-• <strong data-i18n="ppDataCollectionAnalytics">广告与分析数据</strong>：Google AdMob SDK 收集的广告标识符、广告交互数据（用于投放个性化广告和防止无效展示）
+          【本机数据（不上传）】
+          • <strong data-i18n="ppDataCollectionLocalNotes">笔记内容、标签、附件</strong>：所有笔记数据均存储在设备本地（Hive
+          数据库），未上传至云端。卸载应用将删除这些数据（除非用户本地导出/备份）。
+
+          【上传数据】
+          • <strong data-i18n="ppDataCollectionAccount">账户信息</strong>：Google 邮箱、用户 ID（用于登录和跨设备订阅同步）
+          • <strong data-i18n="ppDataCollectionDevice">设备标识符</strong>：广告 ID、设备型号、操作系统版本（用于广告和分析）
+          • <strong data-i18n="ppDataCollectionPurchase">购买信息</strong>：通过 Google Play 和 RevenueCat 处理的购买收据、订阅状态
+          • <strong data-i18n="ppDataCollectionAnalytics">广告与分析数据</strong>：Google AdMob SDK 收集的广告标识符、广告交互数据
+          • <strong data-i18n="ppDataCollectionRedemption">兑换码记录</strong>：已兑换的兑换码、兑换时间、用户标识符（用于防止重复兑换）
 
 我们不会出售或出租您的任何个人信息。</p>
     </section>
@@ -232,7 +237,51 @@
       <h2 data-i18n="ppThirdPartyTitle">2. 第三方数据处理者</h2>
       <p data-i18n="ppThirdPartyIntro">本应用使用以下第三方服务，它们各自拥有独立的隐私政策。我们建议您仔细阅读：</p>
 
-      <div class="third-party-item">
+        <div class="third-party-item">
+            <strong data-i18n="ppTPCFirebaseName">Firebase（Google）</strong>
+            <ul>
+                <li data-i18n="ppTPCFirebaseDesc">用途：用户身份验证、崩溃报告、使用情况分析、兑换码记录存储</li>
+                <li data-i18n="ppTPCFirebaseDataAuth">收集数据 - Firebase Auth：用户 ID、邮箱、登录凭证</li>
+                <li data-i18n="ppTPCFirebaseDataCrash">收集数据 - Firebase Crashlytics：崩溃日志、设备信息、应用版本</li>
+                <li data-i18n="ppTPCFirebaseDataAnalytics">收集数据 - Firebase Analytics：设备标识符、使用数据、事件数据
+                </li>
+                <li data-i18n="ppTPCFirebaseDataFirestore">收集数据 -
+                    Firestore：仅存储兑换码使用记录（已兑换的兑换码、兑换时间、用户标识符），用于防止重复兑换。不包含用户笔记内容。
+                </li>
+                <li data-i18n="ppTPCFirebaseNoteData">用户笔记数据：所有笔记、标签、附件均存储在设备本地（Hive
+                    数据库），未上传至云端。卸载应用将删除这些数据（除非用户本地导出/备份）。
+                </li>
+                <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a
+                        href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">firebase.google.com/support/privacy</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="third-party-item">
+            <strong data-i18n="ppTPCGoogleCloudFunctionsName">Google Cloud Functions（Google）</strong>
+            <ul>
+                <li data-i18n="ppTPCGoogleCloudFunctionsDesc">用途：处理兑换码授权请求（grant-entitlement 函数调用
+                    RevenueCat API）
+                </li>
+                <li data-i18n="ppTPCGoogleCloudFunctionsData">收集数据：用户 ID、兑换码 ID</li>
+                <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a
+                        href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank"
+                        rel="noopener noreferrer">cloud.google.com/terms/cloud-privacy-notice</a></li>
+            </ul>
+        </div>
+
+        <div class="third-party-item">
+            <strong data-i18n="ppTPCGoogleSignInName">Google Sign-In（Google）</strong>
+            <ul>
+                <li data-i18n="ppTPCGoogleSignInDesc">用途：用户登录</li>
+                <li data-i18n="ppTPCGoogleSignInData">收集数据：Google 账户邮箱、昵称、头像 URL</li>
+                <li><span data-i18n="ppPrivacyPolicyLabel">隐私政策：</span><a href="https://policies.google.com/privacy"
+                                                                              target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="third-party-item">
         <strong data-i18n="ppTPCRevenueCatName">RevenueCat（订阅权益服务）</strong>
         <ul>
           <li data-i18n="ppTPCRevenueCatDesc">用途：验证您的购买和订阅状态、跨设备同步会员权益</li>
@@ -362,19 +411,34 @@
 const translations = {
   "zh-CN": {
     "privacyPolicyTitle": "隐私政策",
-    "privacyPolicyUpdated": "最后更新日期：2026年9月1日",
+      "privacyPolicyUpdated": "最后更新日期：2026年10月8日",
     "privacyPolicy": "隐私政策",
     "ppIntroTitle": "引言",
     "ppIntroContent": "欢迎使用 MiniMemo（以下简称\"本应用\"）。我们非常重视您的隐私保护。本隐私政策将清楚地说明我们如何收集、使用、存储和保护您的个人数据，以及您享有的相关权利。\n\n请您在使用本应用前仔细阅读本政策。继续使用本应用即表示您同意本政策中所述的做法。",
     "ppDataCollectionTitle": "1. 信息收集",
-    "ppDataCollectionContent": "我们仅在您使用本应用必需的范围内收集最少的信息：\n\n• 账户信息：您注册时提供的邮箱、密码（加密存储）、昵称\n• 使用数据：您创建的笔记内容、标签、附件（仅存储在您的设备本地）\n• 设备信息：设备标识符、操作系统版本（用于订阅权益同步、防止试用期滥用、广告展示和应用优化）\n• 购买信息：通过 Google Play 和 RevenueCat SDK 处理的购买收据、订阅状态\n• 广告与分析数据：Google AdMob SDK 收集的广告标识符、广告交互数据（用于投放个性化广告和防止无效展示）\n\n我们不会出售或出租您的任何个人信息。",
+      "ppDataCollectionContent": "我们仅在您使用本应用必需的范围内收集最少的信息：\n\n【本机数据（不上传）】\n• 笔记内容、标签、附件：所有笔记数据均存储在设备本地（Hive 数据库），未上传至云端。卸载应用将删除这些数据（除非用户本地导出/备份）。\n\n【上传数据】\n• 账户信息：Google 邮箱、用户 ID（用于登录和跨设备订阅同步）\n• 设备标识符：广告 ID、设备型号、操作系统版本（用于广告和分析）\n• 购买信息：通过 Google Play 和 RevenueCat 处理的购买收据、订阅状态\n• 广告与分析数据：Google AdMob SDK 收集的广告标识符、广告交互数据\n• 兑换码记录：已兑换的兑换码、兑换时间、用户标识符（用于防止重复兑换）\n\n我们不会出售或出租您的任何个人信息。",
+      "ppDataCollectionLocalNotes": "笔记内容、标签、附件",
     "ppDataCollectionAccount": "账户信息",
     "ppDataCollectionUsage": "使用数据",
-    "ppDataCollectionDevice": "设备信息",
+      "ppDataCollectionDevice": "设备标识符",
     "ppDataCollectionPurchase": "购买信息",
     "ppDataCollectionAnalytics": "广告与分析数据",
+      "ppDataCollectionRedemption": "兑换码记录",
     "ppThirdPartyTitle": "2. 第三方数据处理者",
     "ppThirdPartyIntro": "本应用使用以下第三方服务，它们各自拥有独立的隐私政策。我们建议您仔细阅读：",
+      "ppTPCFirebaseName": "Firebase（Google）",
+      "ppTPCFirebaseDesc": "用途：用户身份验证、崩溃报告、使用情况分析、兑换码记录存储",
+      "ppTPCFirebaseDataAuth": "收集数据 - Firebase Auth：用户 ID、邮箱、登录凭证",
+      "ppTPCFirebaseDataCrash": "收集数据 - Firebase Crashlytics：崩溃日志、设备信息、应用版本",
+      "ppTPCFirebaseDataAnalytics": "收集数据 - Firebase Analytics：设备标识符、使用数据、事件数据",
+      "ppTPCFirebaseDataFirestore": "收集数据 - Firestore：仅存储兑换码使用记录（已兑换的兑换码、兑换时间、用户标识符），用于防止重复兑换。不包含用户笔记内容。",
+      "ppTPCFirebaseNoteData": "用户笔记数据：所有笔记、标签、附件均存储在设备本地（Hive 数据库），未上传至云端。卸载应用将删除这些数据（除非用户本地导出/备份）。",
+      "ppTPCGoogleCloudFunctionsName": "Google Cloud Functions（Google）",
+      "ppTPCGoogleCloudFunctionsDesc": "用途：处理兑换码授权请求（grant-entitlement 函数调用 RevenueCat API）",
+      "ppTPCGoogleCloudFunctionsData": "收集数据：用户 ID、兑换码 ID",
+      "ppTPCGoogleSignInName": "Google Sign-In（Google）",
+      "ppTPCGoogleSignInDesc": "用途：用户登录",
+      "ppTPCGoogleSignInData": "收集数据：Google 账户邮箱、昵称、头像 URL",
     "ppTPCRevenueCatName": "RevenueCat（订阅权益服务）",
     "ppTPCRevenueCatDesc": "用途：验证您的购买和订阅状态、跨设备同步会员权益",
     "ppTPCRevenueCatData": "收集数据：设备标识符、Google Play 购买收据、应用内用户 ID",
@@ -413,19 +477,34 @@ const translations = {
   },
   "en": {
     "privacyPolicyTitle": "Privacy Policy",
-    "privacyPolicyUpdated": "Last updated: September 1, 2026",
+      "privacyPolicyUpdated": "Last updated: October 8, 2026",
     "privacyPolicy": "Privacy Policy",
     "ppIntroTitle": "Introduction",
     "ppIntroContent": "Welcome to MiniMemo (hereinafter referred to as \"the App\"). We take your privacy very seriously. This Privacy Policy clearly explains how we collect, use, store, and protect your personal data, as well as the rights you have regarding it.\n\nPlease read this policy carefully before using the App. By continuing to use the App, you consent to the practices described in this policy.",
     "ppDataCollectionTitle": "1. Information Collection",
-    "ppDataCollectionContent": "We collect minimal information necessary for you to use this App:\n\n• Account Info: Email, password (encrypted), nickname you provide during registration\n• Usage Data: Your notes, tags, attachments (stored locally on your device only)\n• Device Info: Device identifier, OS version (for subscription sync, trial abuse prevention, ad serving, and app optimization)\n• Purchase Info: Purchase receipts and subscription status processed through Google Play and the RevenueCat SDK\n• Ad & Analytics Data: Ad identifier and ad interaction data collected by the Google AdMob SDK (for serving personalized ads and preventing invalid impressions)\n\nWe do not sell or rent any of your personal information.",
+      "ppDataCollectionContent": "We collect minimal information necessary for you to use this App:\n\n[Local Data (Not Uploaded)]\n• Note content, tags, attachments: All note data is stored locally on device (Hive database), NOT uploaded to cloud. Uninstalling the app deletes this data (unless user exports/backs up locally).\n\n[Uploaded Data]\n• Account Info: Google email, user ID (for login and cross-device subscription sync)\n• Device Identifiers: Ad ID, device model, OS version (for ads and analytics)\n• Purchase Info: Purchase receipts, subscription status processed through Google Play and RevenueCat\n• Ad & Analytics Data: Ad identifiers and ad interaction data collected by Google AdMob SDK\n• Redemption Code Records: Redeemed codes, redemption time, user identifier (for preventing duplicate redemption)\n\nWe do not sell or rent any of your personal information.",
+      "ppDataCollectionLocalNotes": "Note content, tags, attachments",
     "ppDataCollectionAccount": "Account Info",
     "ppDataCollectionUsage": "Usage Data",
-    "ppDataCollectionDevice": "Device Info",
+      "ppDataCollectionDevice": "Device Identifiers",
     "ppDataCollectionPurchase": "Purchase Info",
     "ppDataCollectionAnalytics": "Ad & Analytics Data",
+      "ppDataCollectionRedemption": "Redemption Code Records",
     "ppThirdPartyTitle": "2. Third-Party Data Processors",
     "ppThirdPartyIntro": "This App uses the following third-party services, each with its own independent privacy policy. We encourage you to read them carefully:",
+      "ppTPCFirebaseName": "Firebase (Google)",
+      "ppTPCFirebaseDesc": "Purpose: User authentication, crash reporting, usage analytics, redemption code record storage",
+      "ppTPCFirebaseDataAuth": "Data collected - Firebase Auth: User ID, email, login credentials",
+      "ppTPCFirebaseDataCrash": "Data collected - Firebase Crashlytics: Crash logs, device info, app version",
+      "ppTPCFirebaseDataAnalytics": "Data collected - Firebase Analytics: Device identifiers, usage data, event data",
+      "ppTPCFirebaseDataFirestore": "Data collected - Firestore: ONLY stores redemption code usage records (redeemed codes, redemption time, user identifier) for preventing duplicate redemption. Does NOT contain user note content.",
+      "ppTPCFirebaseNoteData": "User note data: ALL notes, tags, attachments stored locally on device (Hive database), NOT uploaded to cloud. Uninstalling the app deletes this data (unless user exports/backs up locally).",
+      "ppTPCGoogleCloudFunctionsName": "Google Cloud Functions (Google)",
+      "ppTPCGoogleCloudFunctionsDesc": "Purpose: Process redemption code authorization requests (grant-entitlement function calls RevenueCat API)",
+      "ppTPCGoogleCloudFunctionsData": "Data collected: User ID, redemption code ID",
+      "ppTPCGoogleSignInName": "Google Sign-In (Google)",
+      "ppTPCGoogleSignInDesc": "Purpose: User login",
+      "ppTPCGoogleSignInData": "Data collected: Google account email, nickname, avatar URL",
     "ppTPCRevenueCatName": "RevenueCat (Subscription Service)",
     "ppTPCRevenueCatDesc": "Purpose: Verify your purchase and subscription status, sync premium benefits across devices",
     "ppTPCRevenueCatData": "Data collected: Device identifier, Google Play purchase receipt, in-app user ID",
@@ -464,19 +543,34 @@ const translations = {
   },
   "zh-TW": {
     "privacyPolicyTitle": "隱私政策",
-    "privacyPolicyUpdated": "最後更新日期：2026年9月1日",
+      "privacyPolicyUpdated": "最後更新日期：2026年10月8日",
     "privacyPolicy": "隱私政策",
     "ppIntroTitle": "引言",
     "ppIntroContent": "歡迎使用 MiniMemo（以下簡稱「本應用」）。我們非常重視您的隱私保護。本隱私政策將清楚地說明我們如何收集、使用、儲存和保護您的個人資料，以及您享有的相關權利。\n\n請您在使用本應用前仔細閱讀本政策。繼續使用本應用即表示您同意本政策中所述的做法。",
     "ppDataCollectionTitle": "1. 資訊收集",
-    "ppDataCollectionContent": "我們僅在您使用本應用必需的範圍內收集最少的資訊：\n\n• 帳戶資訊：您註冊時提供的電子郵件、密碼（加密儲存）、暱稱\n• 使用資料：您建立的筆記內容、標籤、附件（僅儲存在您的裝置本機）\n• 裝置資訊：裝置識別碼、作業系統版本（用於訂閱權益同步、防止試用期濫用、廣告展示和應用優化）\n• 購買資訊：透過 Google Play 和 RevenueCat SDK 處理的購買收據、訂閱狀態\n• 廣告與分析資料：Google AdMob SDK 收集的廣告識別碼、廣告互動資料（用於投放個人化廣告和防止無效展示）\n\n我們不會出售或出租您的任何個人資訊。",
+      "ppDataCollectionContent": "我們僅在您使用本應用必需的範圍內收集最少的資訊：\n\n【本機資料（不上傳）】\n• 筆記內容、標籤、附件：所有筆記資料均儲存在裝置本機（Hive 資料庫），未上傳至雲端。解除安裝應用將刪除這些資料（除非使用者本機匯出/備份）。\n\n【上傳資料】\n• 帳戶資訊：Google 電子郵件、使用者 ID（用於登入和跨裝置訂閱同步）\n• 裝置識別碼：廣告 ID、裝置型號、作業系統版本（用於廣告和分析）\n• 購買資訊：透過 Google Play 和 RevenueCat 處理的購買收據、訂閱狀態\n• 廣告與分析資料：Google AdMob SDK 收集的廣告識別碼、廣告互動資料\n• 兌換碼記錄：已兌換的兌換碼、兌換時間、使用者識別碼（用於防止重複兌換）\n\n我們不會出售或出租您的任何個人資訊。",
+      "ppDataCollectionLocalNotes": "筆記內容、標籤、附件",
     "ppDataCollectionAccount": "帳戶資訊",
     "ppDataCollectionUsage": "使用資料",
-    "ppDataCollectionDevice": "裝置資訊",
+      "ppDataCollectionDevice": "裝置識別碼",
     "ppDataCollectionPurchase": "購買資訊",
     "ppDataCollectionAnalytics": "廣告與分析資料",
+      "ppDataCollectionRedemption": "兌換碼記錄",
     "ppThirdPartyTitle": "2. 第三方資料處理者",
     "ppThirdPartyIntro": "本應用使用以下第三方服務，它們各自擁有獨立的隱私政策。我們建議您仔細閱讀：",
+      "ppTPCFirebaseName": "Firebase（Google）",
+      "ppTPCFirebaseDesc": "用途：使用者身分驗證、崩潰報告、使用情況分析、兌換碼記錄儲存",
+      "ppTPCFirebaseDataAuth": "收集資料 - Firebase Auth：使用者 ID、電子郵件、登入憑證",
+      "ppTPCFirebaseDataCrash": "收集資料 - Firebase Crashlytics：崩潰日誌、裝置資訊、應用版本",
+      "ppTPCFirebaseDataAnalytics": "收集資料 - Firebase Analytics：裝置識別碼、使用資料、事件資料",
+      "ppTPCFirebaseDataFirestore": "收集資料 - Firestore：僅儲存兌換碼使用記錄（已兌換的兌換碼、兌換時間、使用者識別碼），用於防止重複兌換。不包含使用者筆記內容。",
+      "ppTPCFirebaseNoteData": "使用者筆記資料：所有筆記、標籤、附件均儲存在裝置本機（Hive 資料庫），未上傳至雲端。解除安裝應用將刪除這些資料（除非使用者本機匯出/備份）。",
+      "ppTPCGoogleCloudFunctionsName": "Google Cloud Functions（Google）",
+      "ppTPCGoogleCloudFunctionsDesc": "用途：處理兌換碼授權請求（grant-entitlement 函式呼叫 RevenueCat API）",
+      "ppTPCGoogleCloudFunctionsData": "收集資料：使用者 ID、兌換碼 ID",
+      "ppTPCGoogleSignInName": "Google Sign-In（Google）",
+      "ppTPCGoogleSignInDesc": "用途：使用者登入",
+      "ppTPCGoogleSignInData": "收集資料：Google 帳戶電子郵件、暱稱、頭像 URL",
     "ppTPCRevenueCatName": "RevenueCat（訂閱權益服務）",
     "ppTPCRevenueCatDesc": "用途：驗證您的購買和訂閱狀態、跨裝置同步會員權益",
     "ppTPCRevenueCatData": "收集資料：裝置識別碼、Google Play 購買收據、應用內使用者 ID",
